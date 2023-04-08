@@ -1,0 +1,69 @@
+h1{
+    background-color: black;
+    color: white;
+    width: 100vw;
+   
+    
+}
+hr{
+    padding-top: 0;
+}
+body{
+  margin: 0;
+  background-color: black;
+  text-align: center;
+
+}
+.addBtn{
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    position: fixed;
+    right: 80px;
+    bottom: 70px;
+    border-style: none;
+
+}
+#closeBtn{
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    position: fixed;
+    right: 80px;
+    bottom: 150px;
+    border-style: none;
+}
+#formArea{
+    background-color: white;
+   
+    height: 400px;
+    width: 250px;
+    position: fixed;
+    bottom: 70px;
+    right: 200px;
+    
+    box-shadow: 1px 2px 5px 2px white;
+}
+#addForm{
+    justify-items: center;
+}
+#addForm label, input, button{
+    margin-top: 30px;
+}
+#bookCardArea{
+    width: 100vw;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    
+
+    
+}
+#cardDiv{
+    background-color: white;
+    width: 200px;
+    height: 300px;
+    margin: auto;
+    margin-top: 30px;
+    
+}
