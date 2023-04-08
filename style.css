@@ -60,10 +60,18 @@ body{
     
 }
 #cardDiv{
-    background-color: white;
+    background-color: rgb(8, 8, 58);
+    color: white;
     width: 200px;
     height: 300px;
     margin: auto;
     margin-top: 30px;
     
+}
+#cardDiv p, button, img{
+    margin-top: 0;
+}
+#coverImg{
+    width: 80px;
+    height: 100px;
 }

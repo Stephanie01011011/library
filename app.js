@@ -1,4 +1,5 @@
 let myLibrary = [];
+let i = 0;
 
 
 function Book(title, author, pages, read) {
@@ -7,7 +8,7 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
   
-  createBookCard(this.title, this.author, this.pages, this.read);
+  createBookCard(this.title, this.author, this.pages, this.read, this);
 }
 
 function addBookToLibrary(book) {
@@ -48,7 +49,8 @@ function onSubmit(){
     closeForm();
 }
 
-function createBookCard(title, author, pages, read){
+function createBookCard(title, author, pages, read, book){
+    i++
     let bookCardArea = document.getElementById("bookCardArea");
     let cardDiv = document.createElement("div");
     cardDiv.id = "cardDiv";
@@ -56,10 +58,48 @@ function createBookCard(title, author, pages, read){
     let titleText = document.createElement("h3");
     titleText.textContent = title;
     cardDiv.appendChild(titleText);
-    let authorText = document.createElement("h4");
+    
+    //Add book cover image
+      
+    if (book.title == "Acotar"){
+      let coverImage = document.createElement("img");
+      coverImage.id = "coverImg";
+      coverImage.src = "Images/acotar.jpeg";
+      cardDiv.appendChild(coverImage);
+    } else if (book.title == "Fbaa"){
+      let coverImage = document.createElement("img");
+      coverImage.id = "coverImg";
+      coverImage.src = "Images/fbaa.jpeg";
+      cardDiv.appendChild(coverImage);
+    } else {
+      let coverImage = document.createElement("img");
+      coverImage.id = "coverImg";
+      coverImage.src = "Images/genericBook.jpeg";
+      cardDiv.appendChild(coverImage);
+    }
+  
+     
+  
+
+    let authorText = document.createElement("p");
     authorText.textContent = author;
     cardDiv.appendChild(authorText);
-    let pagesText = document.createElement("h4");
+    let pagesText = document.createElement("p");
     pagesText.textContent = pages;
     cardDiv.appendChild(pagesText);
+    let readText = document.createElement("p");
+    readText.textContent = read;
+    cardDiv.appendChild(readText);
+    let deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    cardDiv.appendChild(deleteBtn);
+    
+
+    
+    
 }
+
+
+
+
+
