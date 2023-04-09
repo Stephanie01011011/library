@@ -12,6 +12,7 @@
 <body onLoad="closeForm()">
     <h1>Welcome to the Library</h1>
     <hr>
+    <button onclick="showBooks()"><h2>Display Books</h2></button>
     <div id="formArea">
         <form action="" id="addForm">
             <h3>Add Book</h3>
@@ -23,7 +24,11 @@
             <input type="text" name="pages" id="pages"><br>
             <label for="read">Read:</label>
             <input type="text" name="read" id="read"><br>
-            <button type="submit" onclick="onSubmit()" id="submitBtn">Add</button>
+            
+                <button type="submit" onclick="onSubmit()" id="submitBtn">Add</button>
+                
+            
+                
         </form>
     </div>
     <div id="bookCardArea"></div>

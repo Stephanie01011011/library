@@ -1,5 +1,5 @@
 let myLibrary = [];
-let i = 0;
+
 
 
 function Book(title, author, pages, read) {
@@ -8,7 +8,7 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
   
-  createBookCard(this.title, this.author, this.pages, this.read, this);
+  /*createBookCard(this.title, this.author, this.pages, this.read, this);*/
 }
 
 function addBookToLibrary(book) {
@@ -46,27 +46,34 @@ function onSubmit(){
 
     let book = new Book(title, author, pages, read);
     addBookToLibrary(book);
+    
     closeForm();
 }
 
-function createBookCard(title, author, pages, read, book){
-    i++
+function showBooks(){
+  //clear the card area first
+  document.getElementById("bookCardArea").innerHTML = "";
+
+  //iterate through library to diplay all books
+  for(let i = 0; i < myLibrary.length; i++){
     let bookCardArea = document.getElementById("bookCardArea");
     let cardDiv = document.createElement("div");
     cardDiv.id = "cardDiv";
+    cardDiv.class = "card"+`${i}`;
+    console.log(cardDiv.class);
     bookCardArea.appendChild(cardDiv);
     let titleText = document.createElement("h3");
-    titleText.textContent = title;
+    titleText.textContent = myLibrary[i].title;
     cardDiv.appendChild(titleText);
     
     //Add book cover image
       
-    if (book.title == "Acotar"){
+    if (myLibrary[i].title == "Acotar"){
       let coverImage = document.createElement("img");
       coverImage.id = "coverImg";
       coverImage.src = "Images/acotar.jpeg";
       cardDiv.appendChild(coverImage);
-    } else if (book.title == "Fbaa"){
+    } else if (myLibrary[i].title == "Fbaa"){
       let coverImage = document.createElement("img");
       coverImage.id = "coverImg";
       coverImage.src = "Images/fbaa.jpeg";
@@ -77,29 +84,48 @@ function createBookCard(title, author, pages, read, book){
       coverImage.src = "Images/genericBook.jpeg";
       cardDiv.appendChild(coverImage);
     }
-  
-     
-  
-
     let authorText = document.createElement("p");
-    authorText.textContent = author;
+    authorText.textContent = myLibrary[i].author;
     cardDiv.appendChild(authorText);
     let pagesText = document.createElement("p");
-    pagesText.textContent = pages;
+    pagesText.textContent = myLibrary[i].pages;
     cardDiv.appendChild(pagesText);
     let readText = document.createElement("p");
-    readText.textContent = read;
+    readText.textContent = myLibrary[i].read;
     cardDiv.appendChild(readText);
+
+    //display read and delete button
+    let buttonDiv = document.createElement("div");
+    buttonDiv.class = "buttons";
+    cardDiv.appendChild(buttonDiv);
     let deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
-    cardDiv.appendChild(deleteBtn);
-    
+    buttonDiv.appendChild(deleteBtn);
+    deleteBtn.class = i;
+    deleteBtn.addEventListener("click", (event) => {
+      for(let i = 0; i< 50; i++){
+        
+        if(deleteBtn.class == i){
+            myLibrary.splice(i, 1);
+            showBooks();
+        }
+      }
+    });
 
-    
-    
+    let readBtn = document.createElement("button");
+    readBtn.textContent = "Change Read Status";
+    //toggle the read status on the card
+    readBtn.addEventListener("click", (event) => {
+      if(readText.textContent == "yes"){
+        readText.textContent = "no";
+      } else {
+        readText.textContent = "yes";
+      }
+    });
+    buttonDiv.appendChild(readBtn);
+
+  }
 }
-
-
 
 
 
