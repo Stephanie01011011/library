@@ -85,13 +85,13 @@ function showBooks(){
       cardDiv.appendChild(coverImage);
     }
     let authorText = document.createElement("p");
-    authorText.textContent = myLibrary[i].author;
+    authorText.textContent = "By " + myLibrary[i].author;
     cardDiv.appendChild(authorText);
     let pagesText = document.createElement("p");
-    pagesText.textContent = myLibrary[i].pages;
+    pagesText.textContent = myLibrary[i].pages + " pages";
     cardDiv.appendChild(pagesText);
     let readText = document.createElement("p");
-    readText.textContent = myLibrary[i].read;
+    readText.textContent = "Read: " + myLibrary[i].read;
     cardDiv.appendChild(readText);
 
     //display read and delete button
@@ -114,14 +114,26 @@ function showBooks(){
 
     let readBtn = document.createElement("button");
     readBtn.textContent = "Change Read Status";
+    readBtn.class = i;
+    
     //toggle the read status on the card
     readBtn.addEventListener("click", (event) => {
-      if(readText.textContent == "yes"){
-        readText.textContent = "no";
-      } else {
-        readText.textContent = "yes";
+      for(i = 0; i < myLibrary.length; i++){
+        if (cardDiv.class == "card" + i){
+          if(readText.textContent == "Read: Yes"){
+            readText.textContent = "Read: No";
+            myLibrary[i].read = "No";
+          } else {
+            readText.textContent = "Read: Yes";
+            myLibrary[i].read = "Yes";
+          }
+        } 
+        
       }
+     
     });
+
+
     buttonDiv.appendChild(readBtn);
 
   }

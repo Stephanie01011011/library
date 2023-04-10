@@ -70,6 +70,10 @@ body{
 }
 #cardDiv p, button, img{
     margin-top: 0;
+    text-transform: capitalize;
+}
+#cardDiv h3{
+    text-transform: capitalize;
 }
 #coverImg{
     width: 80px;
